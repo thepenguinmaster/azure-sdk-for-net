@@ -37,7 +37,7 @@
   <PropertyGroup>
     <IsTestProject Condition="$(MSBuildProjectName.EndsWith('.Tests'))">true</IsTestProject>
     <IsSamplesProject Condition="$(MSBuildProjectName.EndsWith('.Samples'))">true</IsSamplesProject>
-    <IsTestSupportProject Condition="'$(IsTestProject)' != 'true' and ($(MSBuildProjectDirectory.Contains('/tests/')) or $(MSBuildProjectDirectory.Contains('\tests\')))">true</IsTestSupportProject>
+    <IsTestSupportProject Condition="'$(IsTestProject)' != 'true' and ($(MSBuildProjectDirectory.Contains('/tests/')) or $(MSBuildProjectDirectory.Contains('\tests\')) or $(MSBuildProjectDirectory.Contains('\Azure.Core.TestFramework\')))">true</IsTestSupportProject>
     <IsShippingClientLibrary Condition="'$(IsClientLibrary)' == 'true' and '$(IsTestProject)' != 'true' and '$(IsTestSupportProject)' != 'true' and '$(IsSamplesProject)' != 'true'">true</IsShippingClientLibrary>
     <IsShippingDataPlaneLibrary Condition="'$(IsDataPlaneProject)' == 'true' and '$(IsTestProject)' != 'true' and '$(IsTestSupportProject)' != 'true' and '$(IsSamplesProject)' != 'true'">true</IsShippingDataPlaneLibrary>
 
@@ -68,6 +68,8 @@
     <RequiredTargetFrameworks>netcoreapp2.1</RequiredTargetFrameworks>
     <RequiredTargetFrameworks Condition="'$(OS)' == 'Windows_NT'">netcoreapp2.1;net461</RequiredTargetFrameworks>
   </PropertyGroup>
+
+  <Import Project="TestFramework.props" Condition="'$(IsTestProject)' == 'true'"/>
 
   <PropertyGroup>
     <TargetFrameworks>$(RequiredTargetFrameworks)</TargetFrameworks>
@@ -120,6 +122,7 @@
     <!-- The set of tags that should be added to the packages -->
     <PackageCommonTags>windowsazureofficial;azureofficial</PackageCommonTags>
     <AzureCoreSharedSources>$(MSBuildThisFileDirectory)/../sdk/core/Azure.Core/src/Shared/</AzureCoreSharedSources>
+    <AzureCoreTestFramework>$(MSBuildThisFileDirectory)/../sdk/core/Azure.Core.TestFramework/src/Azure.Core.TestFramework.csproj</AzureCoreTestFramework>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(IsTestProject)' == 'true' or '$(IsTestSupportProject)' == 'true' or '$(IsSamplesProject)' == 'true'">
