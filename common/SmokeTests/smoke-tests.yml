@@ -34,25 +34,25 @@ jobs:
           OSName: "Windows"
           OSVmImage: "windows-2019"
           TestTargetFramework: netcoreapp2.1
-          SubscriptionConfiguration: $(sub-config-azure-cloud-test-resources-gov)
+          SubscriptionConfiguration: $(sub-config-gov-test-resources)
           ArmTemplateParameters: $(azureUSGovernmentArmParameters)
         Windows_NetFramework (AzureUSGovernment):
           OSName: "Windows"
           OSVmImage: "windows-2019"
           TestTargetFramework: net461
-          SubscriptionConfiguration: $(sub-config-azure-cloud-test-resources-gov)
+          SubscriptionConfiguration: $(sub-config-gov-test-resources)
           ArmTemplateParameters: $(azureUSGovernmentArmParameters)
         Windows_NetCoreApp (AzureChinaCloud):
           OSName: "Windows"
           OSVmImage: "windows-2019"
           TestTargetFramework: netcoreapp2.1
-          SubscriptionConfiguration: $(sub-config-azure-cloud-test-resources-cn)
+          SubscriptionConfiguration: $(sub-config-cn-test-resources)
           ArmTemplateParameters: $(azureChinaCloudArmParameters)
         Windows_NetFramework (AzureChinaCloud):
           OSName: "Windows"
           OSVmImage: "windows-2019"
           TestTargetFramework: net461
-          SubscriptionConfiguration: $(sub-config-azure-cloud-test-resources-cn)
+          SubscriptionConfiguration: $(sub-config-cn-test-resources)
           ArmTemplateParameters: $(azureChinaCloudArmParameters)
 
     pool:
