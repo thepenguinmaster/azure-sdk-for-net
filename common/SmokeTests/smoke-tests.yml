@@ -23,7 +23,7 @@ jobs:
           OSVmImage: "windows-2019"
           TestTargetFramework: net461
           SubscriptionConfiguration: $(sub-config-azure-cloud-test-resources)
-          ArmTemplateParameters: $(azureCloudArmParameters)exp
+          ArmTemplateParameters: $(azureCloudArmParameters)
         MacOs (AzureCloud):
           OSName: "MacOS"
           OSVmImage: "macOS-10.15"
